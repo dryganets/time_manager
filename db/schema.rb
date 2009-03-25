@@ -9,7 +9,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090316064334) do
+ActiveRecord::Schema.define(:version => 20090324124446) do
+
+  create_table "customers", :force => true do |t|
+    t.string "first_name", :limit => 40
+    t.string "last_name",  :limit => 40
+  end
+
+  create_table "log_objects", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.string   "time_spent"
+    t.integer  "customer_id"
+    t.string   "state",        :limit => 1
+    t.string   "type",         :limit => 1
+    t.string   "project_type", :limit => 1
+    t.float    "rate"
+  end
+
+  create_table "milestones", :force => true do |t|
+    t.integer  "log_object_id"
+    t.datetime "first_planed_pay_date"
+    t.datetime "planed_pay_date"
+    t.datetime "real_pay_date"
+    t.string   "time_spent"
+    t.string   "state",                 :limit => 1
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login"
@@ -20,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20090316064334) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+  end
+
+  create_table "work_logs", :force => true do |t|
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "log_object_id"
+    t.datetime "date"
+    t.string   "time_spent"
   end
 
 end

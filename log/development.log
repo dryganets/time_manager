@@ -119,3 +119,39 @@ Processing LoginController#index (for 127.0.0.1 at 2009-03-16 17:59:36) [GET]
   [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
 Rendering login/index
 Completed in 15ms (View: 4, DB: 1) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (14.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (5.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (26.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090316064334)
+Migrating to InitialTables (20090324124446)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (95.4ms)[0m   [0mCREATE TABLE `customers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(40), `last_name` varchar(40)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE TABLE `work_logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `description` varchar(255), `user_id` int(11), `log_object_id` int(11), `date` datetime, `time_spent` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (17.4ms)[0m   [0mCREATE TABLE `log_objects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255), `user_id` int(11), `date` datetime, `time_spent` varchar(255), `customer_id` int(11), `state` varchar(1), `type` varchar(1), `project_type` varchar(1), `rate` double) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `log_object_id` int(11), `first_planed_pay_date` datetime, `planed_pay_date` datetime, `real_pay_date` datetime, `time_spent` varchar(255), `state` varchar(1)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (30.3ms)[0m   [0mDROP TABLE `work_logs`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE `work_logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `description` varchar(255), `user_id` int(11), `log_object_id` int(11), `date` datetime, `time_spent` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090324124446')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `customers`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `customers`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `customers`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `log_objects`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `log_objects`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `log_objects`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `milestones`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `milestones`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `milestones`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (36.2ms)[0m   [0mSHOW FIELDS FROM `work_logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `work_logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `work_logs`[0m
